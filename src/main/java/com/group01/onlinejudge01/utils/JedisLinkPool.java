@@ -1,22 +1,17 @@
 package com.group01.onlinejudge01.utils;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 import java.time.Duration;
 
-@Component
 public class JedisLinkPool {
     private static final JedisPool jedisPool;
 
-    @Value("${redis.url}")
-    static private String url;
+    static private String url = redisUtil.URL;
 
-    @Value("${redis.password}")
-    static private String password;
+    static private String password = redisUtil.PASSWORD;
 
     static private Integer timeout = 1000;
 
@@ -39,7 +34,8 @@ public class JedisLinkPool {
                 timeout,
                 password);
     }
-    public static Jedis getJedis(){
+
+    public static Jedis getJedis() {
         return jedisPool.getResource();
     }
 }
