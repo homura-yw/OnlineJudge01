@@ -15,8 +15,8 @@ import java.util.concurrent.TimeUnit;
 public class judgeSerivceimp implements judgeService{
     public static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
                 10,
-            25,
-            10L,
+                25,
+                10L,
                 TimeUnit.SECONDS,
                 new LinkedBlockingDeque<>(),
                 new CustomThreadFactory()
