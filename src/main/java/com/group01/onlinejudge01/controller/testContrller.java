@@ -2,10 +2,8 @@ package com.group01.onlinejudge01.controller;
 
 import com.group01.onlinejudge01.judgeService.judgeService;
 import com.group01.onlinejudge01.pojo.JudgeRequest;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.group01.onlinejudge01.pojo.submission;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class testContrller {
@@ -44,5 +42,10 @@ public class testContrller {
                 )
         );
         return "ok";
+    }
+
+    @GetMapping("/getbyid")
+    public submission getStateById(String id) throws Exception {
+        return judgeservice.getSubmissionById(id);
     }
 }

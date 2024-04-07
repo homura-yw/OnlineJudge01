@@ -1,5 +1,6 @@
 package com.group01.onlinejudge01.utils;
 
+import com.group01.onlinejudge01.mapper.submissionMapper;
 import com.group01.onlinejudge01.pojo.JudgeRequest;
 import org.springframework.http.*;
 import org.springframework.util.LinkedMultiValueMap;
@@ -17,8 +18,9 @@ public class JudgeTask implements Runnable {
     private JudgeRequest judgeRequest;
     private String url;
     private String timeStr;
+    private submissionMapper submissionmapper;
 
-    public JudgeTask(JudgeRequest judgeRequest, String url) {
+    public JudgeTask(JudgeRequest judgeRequest, String url, submissionMapper submissionmapper) {
         this.judgeRequest = judgeRequest;
         this.url = url;
         this.timeStr = LocalDateTime
@@ -26,6 +28,7 @@ public class JudgeTask implements Runnable {
                 format(
                         DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                 );
+        this.submissionmapper = submissionmapper;
     }
 
     private void send() {
@@ -93,7 +96,7 @@ public class JudgeTask implements Runnable {
         Integer passedNum = 0;
         while (true) {
             try {
-                Thread.sleep(2000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 isRunning.del(submitId);
                 break;
@@ -122,9 +125,22 @@ public class JudgeTask implements Runnable {
                 }
             }
         }
-        isRunning.del(submitId);
         System.out.println("res:" + res);
         System.out.println("submitId:" + submitId);
         System.out.println("timeStr:" + timeStr);
+        System.out.println("passNum:" + passedNum);
+        String verdict;
+        if(res == 0) verdict = "Accept";
+        else if(res == 1) verdict = "Wrong answer";
+        else if(res == 2) verdict = "Time limit exceeded";
+        else if(res == 3) verdict = "memory limit exceeded";
+        else verdict = "Compilation error";
+        submissionmapper.insertItem(
+                submitId,
+                timeStr,
+                verdict,
+                passedNum
+        );
+        isRunning.del(submitId);
     }
 }
