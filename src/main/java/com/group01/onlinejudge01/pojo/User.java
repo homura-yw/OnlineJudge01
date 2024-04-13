@@ -1,6 +1,9 @@
 package com.group01.onlinejudge01.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+
 public class User {
+    @TableId
     private int userId;
     private int password;
     private String nickname;
