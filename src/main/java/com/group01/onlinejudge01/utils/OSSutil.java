@@ -56,7 +56,7 @@ public class OSSutil implements InitializingBean {
         ossClient.putObject(USERS_IMG, fileName, inputStream);
 
         //文件访问路径
-        String url = "https:" + "//" + USERS_IMG  + "." + "oss-cn-beijing" + "/" + fileName;
+        String url = "http://" + USERS_IMG  + "." +  END_POINT + "/" + fileName;
         // 关闭ossClient
         ossClient.shutdown();
         return url;// 把上传到oss的路径返回

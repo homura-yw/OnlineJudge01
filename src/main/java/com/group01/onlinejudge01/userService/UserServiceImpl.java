@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService{
             data.put("result","no");
             return data;
         }
-        user.setImgUrl("https://usersimg.oss-cn-beijing/24f23dd9-bc04-4a6c-9043-d68a5cc5ad70.jpg");
+        user.setImgUrl("http://usersimg.oss-cn-beijing.aliyuncs.com/c861af53-9f99-4fca-83da-8c4173eb696a.jpg");
         user.setNumSolved(0);
         user.setNumSolved(0);
         user.setRegistDate(new Date().toString());
