@@ -18,6 +18,9 @@ public class testContrller {
         return "hello world!! 114514！！";
     }
 
+    //codeUrl,用户的cpp文件
+    //testUrl,OSS下题目的位置
+    //0/1
     @PostMapping("/send")
     public String sendTest(
             @RequestParam("codeUrl") String codeUrl,
@@ -28,7 +31,8 @@ public class testContrller {
             @RequestParam("problemType") Integer problemType,
             @RequestParam("submitId") String submitId,
             @RequestParam("testUrl") String testUrl
-    ) {
+    )
+    {
         judgeservice.send(
                 new JudgeRequest(
                         codeUrl,

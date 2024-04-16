@@ -1,11 +1,11 @@
 package com.group01.onlinejudge01.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.*;
-
 import com.group01.onlinejudge01.pojo.TestCase;
 
 @Mapper
-public interface testCaseMapper {
+public interface TestCaseMapper extends BaseMapper<TestCase> {
     @Select("SELECT * FROM test_case_table WHERE testCaseID = #{testCaseID}")
     TestCase getTestCaseById(int testCaseID);
 
