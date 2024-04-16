@@ -26,6 +26,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("problem")
+@CrossOrigin
 public class ProblemController {
     @Autowired
     private judgeService judgeservice;
