@@ -70,6 +70,7 @@ public class JudgeTask implements Runnable {
             System.out.println("Request failed with status: " + response.getStatusCode());
         }
     }
+
     /*
      * 判题回馈算法机制
      * 2秒一次心跳
@@ -86,7 +87,7 @@ public class JudgeTask implements Runnable {
         Jedis jedis = JedisLinkPool.getJedis();
         String submitId = this.judgeRequest.getSubmitId();
         String submitIdNum = submitId + "num";
-        isRunning.add(submitId);
+        // isRunning.add(submitId);
         this.send();
 
         jedis.setex(submitId + "time", 10, this.timeStr);

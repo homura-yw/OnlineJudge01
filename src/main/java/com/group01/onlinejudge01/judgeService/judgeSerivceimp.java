@@ -25,7 +25,9 @@ public class judgeSerivceimp implements judgeService{
                 new CustomThreadFactory()
         );
     private submissionMapper submissionmapper;
+
     public void send(JudgeRequest judgeRequest) {
+        isRunning.add(judgeRequest.getSubmitId());
         threadPoolExecutor.execute(new JudgeTask(judgeRequest, JudgeLinkUtil.URL, submissionmapper));
     }
 
