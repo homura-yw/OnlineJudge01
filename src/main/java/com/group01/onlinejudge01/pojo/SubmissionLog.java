@@ -1,45 +1,18 @@
 package com.group01.onlinejudge01.pojo;
 
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@TableName("submission_log")
 public class SubmissionLog {
-    private int submissionID;
-    private int userID;
-    private int problemID;
+    @TableId(value = "submissionID", type = IdType.AUTO)
+    private Integer submissionID;
+    private Integer userId;
+    private Integer problemId;
     private String codeUrl;
-
-    // 构造函数
-    public SubmissionLog() {
-    }
-
-    // Getter和Setter方法
-    public int getSubmissionID() {
-        return submissionID;
-    }
-
-    public void setSubmissionID(int submissionID) {
-        this.submissionID = submissionID;
-    }
-
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
-    public int getProblemID() {
-        return problemID;
-    }
-
-    public void setProblemID(int problemID) {
-        this.problemID = problemID;
-    }
-
-    public String getCodeUrl() {
-        return codeUrl;
-    }
-
-    public void setCodeUrl(String codeUrl) {
-        this.codeUrl = codeUrl;
-    }
 }

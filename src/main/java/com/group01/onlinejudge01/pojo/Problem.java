@@ -10,16 +10,17 @@ import lombok.Value;
 @Data
 public class Problem {
     @TableId
-    private int problemId;
+    private Integer problemId;
     private String problemName;
     private String problemDescription;
-    private int problemDifficulty;
-    private int problemType;
-    private int testCaseId;
+    private Integer problemDifficulty;
+    private Integer problemType;
+    private Integer testCaseId;
     private String creationDate;
     private String creator;
-    private int timeLimit;
-    private int memoryLimit;
+    private Integer timeLimit;
+    private Integer memoryLimit;
     private String additionalTestCases;
+    private String OssUrl;
 
 }

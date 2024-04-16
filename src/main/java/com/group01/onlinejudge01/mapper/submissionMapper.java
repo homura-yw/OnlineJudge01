@@ -1,5 +1,6 @@
 package com.group01.onlinejudge01.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.group01.onlinejudge01.pojo.submission;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -8,7 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 @Mapper
-public interface submissionMapper {
+public interface submissionMapper extends BaseMapper<submission> {
 
     @Select("select * from submissions where id = #{id}")
     List<submission> getItemById(String id);
