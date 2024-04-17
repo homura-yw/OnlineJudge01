@@ -62,4 +62,23 @@ public class OSSutil implements InitializingBean {
         return url;// 把上传到oss的路径返回
     }
 
+    public String uploadProblem(MultipartFile file) throws IOException {
+        // 获取上传的文件的输入流
+        InputStream inputStream = file.getInputStream();
+
+        // 避免文件覆盖
+        String originalFilename = file.getOriginalFilename();
+        String fileName = UUID.randomUUID().toString() + originalFilename.substring(originalFilename.lastIndexOf("."));
+
+        //上传文件到 OSS
+        OSS ossClient = new OSSClientBuilder().build(END_POINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET);
+        ossClient.putObject(PROBLEM_TEST, fileName, inputStream);
+
+        //文件访问路径
+        String url = "http://" + PROBLEM_TEST  + "." +  END_POINT + "/" + fileName;
+        // 关闭ossClient
+        ossClient.shutdown();
+        return url;// 把上传到oss的路径返回
+    }
+
 }

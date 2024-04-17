@@ -75,8 +75,8 @@ public class ProblemController {
      * @throws IOException
      */
     @PostMapping("upload")
-    public Result upload(MultipartFile file) throws IOException {
-        String url = ossUtil.upload(file);
+    public Result uploadProblem(MultipartFile file) throws IOException {
+        String url = ossUtil.uploadProblem(file);
         return Result.success(url);
     }
 
